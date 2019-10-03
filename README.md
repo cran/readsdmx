@@ -2,8 +2,11 @@
 
 [![Build Status](https://travis-ci.org/mdequeljoe/readsdmx.svg?branch=master)](https://travis-ci.org/mdequeljoe/readsdmx)
 [![CRAN Status](https://www.r-pkg.org/badges/version/readsdmx)](https://cran.r-project.org/package=readsdmx)
+[![Github tag](https://img.shields.io/github/tag/mdequeljoe/readsdmx.svg?style=flat)](https://github.com/mdequeljoe/readsdmx/tags)
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![codecov](https://codecov.io/gh/mdequeljoe/readsdmx/branch/master/graph/badge.svg)](https://codecov.io/gh/mdequeljoe/readsdmx)
 
-Read sdmx data into R dataframes from either a local SDMX-ML file or from a SDMX web-service:
+Read [sdmx](https://sdmx.org/) data into dataframes from either a local SDMX-ML file or from a SDMX web-service:
 
 ```r
 u <-
@@ -15,6 +18,12 @@ The [RapidXML](http://rapidxml.sourceforge.net) C++ library is used to parse the
 
 ## Install
 
+From CRAN:
+```r
+install.packages("readsdmx")
+```
+
+From GitHub:
 ```r
 devtools::install_github("mdequeljoe/readsdmx")
 ```
@@ -26,6 +35,8 @@ The follow data message types are supported:
 - Compact (version 2.0)
 - Generic (2.0 & 2.1)
 - Structure Specific Data (2.1)
+- Utility (2.0)
+- Cross-sectional (2.0)
 - Structure Code-lists (2.0 & 2.1)
 
 ## Benchmark
@@ -43,10 +54,12 @@ microbenchmark::microbenchmark(
 
 #> Unit: seconds
 #>      expr    min     lq   mean median     uq    max neval
-#>  readsdmx  0.158  0.164  0.176  0.166  0.176  0.217     5
-#>     rsdmx 26.321 26.992 30.762 30.757 34.341 35.397     5
+#>  readsdmx  0.152  0.153  0.159  0.161  0.165  0.165     5
+#>     rsdmx 23.955 24.578 24.732 24.937 25.005 25.185     5
 ```
 
 ## Related
 
 [rsdmx](https://github.com/opensdmx/rsdmx)
+
+[pandasdmx](https://github.com/dr-leo/pandaSDMX) (python)

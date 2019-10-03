@@ -17,7 +17,7 @@ NULL
 #' f <- system.file("extdata/compact_2.0.xml", package = "readsdmx")
 #' d <- readsdmx::read_sdmx(f)
 #'
-#' \dontrun{
+#' \donttest{
 #' u <-
 #'  "https://stats.oecd.org/restsdmx/sdmx.ashx/GetData/HH_DASH/..Q/all?format=compact_v2"
 #' d <- readsdmx::read_sdmx(u)
@@ -32,12 +32,12 @@ read_sdmx <-
            method = "libcurl",
            mode = "w",
            ...) {
-    if (is_url(path)) {
+    if (is_url(path)) { #nocov start
       if (!capabilities("libcurl") && method == "libcurl")
         method <- "auto"
       df <- download.file(path, destfile, method, quiet, mode, ...)
       stopifnot(df == 0L)
-      path <- destfile
+      path <- destfile  #nocov end
     }
     stopifnot(file.exists(path))
     path <- normalizePath(path)
